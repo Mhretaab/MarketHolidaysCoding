@@ -1,0 +1,5 @@
+Ë20:12:10.838 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Computing holidays from file: /C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv
+»20:12:10.844 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Parsing file: /C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv
+Ç20:12:10.846 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - file :/C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv parsed successfully
+r20:12:10.861 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Computing holidays from file: no_file.csv
+b20:12:10.861 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Parsing file: no_file.csv

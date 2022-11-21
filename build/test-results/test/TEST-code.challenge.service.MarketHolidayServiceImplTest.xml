@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="code.challenge.service.MarketHolidayServiceImplTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-11-21T19:12:10" hostname="EPESMALW03D9" time="0.189">
+  <properties/>
+  <testcase name="givenMarketQuotes_WhenRequestedForHoliday_shouldReturnListOfHolidays()" classname="code.challenge.service.MarketHolidayServiceImplTest" time="0.185"/>
+  <testcase name="givenNoCSVFile_WhenRequestedForHoliday_ShouldThrowException()" classname="code.challenge.service.MarketHolidayServiceImplTest" time="0.003"/>
+  <system-out><![CDATA[20:12:10.838 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Computing holidays from file: /C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv
+20:12:10.844 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Parsing file: /C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv
+20:12:10.846 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - file :/C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv parsed successfully
+20:12:10.861 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Computing holidays from file: no_file.csv
+20:12:10.861 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Parsing file: no_file.csv
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
