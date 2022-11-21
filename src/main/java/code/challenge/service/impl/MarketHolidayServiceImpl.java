@@ -1,7 +1,7 @@
 package code.challenge.service.impl;
 
 import code.challenge.service.MarketHolidayService;
-import code.challenge.utility.DateFormats;
+import code.challenge.utility.DateFormatsAndPatterns;
 import code.challenge.utility.Delimiters;
 import code.challenge.utility.WeekEndsEnum;
 import org.slf4j.Logger;
@@ -44,7 +44,7 @@ public class MarketHolidayServiceImpl implements MarketHolidayService {
             if (!marketDates.contains(candidateHoliday) &&
                     !WeekEndsEnum.getWeekEnds().contains(candidateHoliday.getDayOfWeek().name())) {
 
-                holidays.add(candidateHoliday.format(DateTimeFormatter.ofPattern(DateFormats.MARKET_QUOTE_DATE_FORMAT)));
+                holidays.add(candidateHoliday.format(DateTimeFormatter.ofPattern(DateFormatsAndPatterns.MARKET_QUOTE_DD_MM_YYYY_DATE_FORMAT)));
             }
 
             candidateHoliday = candidateHoliday.plusDays(1);
@@ -64,7 +64,16 @@ public class MarketHolidayServiceImpl implements MarketHolidayService {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 final String[] marketData = line.split(Delimiters.COMMA_DELIMITER);
-                marketDates.add(LocalDate.parse(marketData[0], DateTimeFormatter.ofPattern(DateFormats.MARKET_QUOTE_DATE_FORMAT)));
+
+                String dateFormat = "";
+
+                if (marketData[0].matches(DateFormatsAndPatterns.DD_MM_YYYY_DATE_PATTERN)) {
+                    dateFormat = DateFormatsAndPatterns.MARKET_QUOTE_DD_MM_YYYY_DATE_FORMAT;
+                } else if (marketData[0].matches(DateFormatsAndPatterns.YYYY_MM_DD_DATE_PATTERN)) {
+                    dateFormat = DateFormatsAndPatterns.MARKET_QUOTE_YYYY_MM_DD_DATE_FORMAT;
+                }
+
+                marketDates.add(LocalDate.parse(marketData[0], DateTimeFormatter.ofPattern(dateFormat)));
             }
         }
 

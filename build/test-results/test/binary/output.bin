@@ -1,5 +1,9 @@
-Ë20:12:10.838 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Computing holidays from file: /C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv
-»20:12:10.844 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Parsing file: /C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv
-Ç20:12:10.846 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - file :/C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv parsed successfully
-r20:12:10.861 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Computing holidays from file: no_file.csv
-b20:12:10.861 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Parsing file: no_file.csv
+Ë20:46:20.100 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Computing holidays from file: /C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv
+»20:46:20.105 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Parsing file: /C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv
+Ç20:46:20.108 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - file :/C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/test_data.csv parsed successfully
+r20:46:20.119 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Computing holidays from file: no_file.csv
+b20:46:20.119 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Parsing file: no_file.csv
+Æ20:46:20.120 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Computing holidays from file: /C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/EPAM.csv
+¶20:46:20.121 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - Parsing file: /C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/EPAM.csv
+Â20:46:20.141 [Test worker] INFO  c.c.s.impl.MarketHolidayServiceImpl - file :/C:/Users/Mhretaab_Ayenew/Documents/Projects/MarketHolidaysCoding/build/resources/test/EPAM.csv parsed successfully
+V[17/01/2022, 21/02/2022, 15/04/2022, 30/05/2022, 20/06/2022, 04/07/2022, 05/09/2022]
