@@ -56,13 +56,11 @@ public class MarketHolidayServiceImpl implements MarketHolidayService {
     private Optional<List<LocalDate>> readMarketDatesFromCsv(final String filePath) throws IOException {
         LOGGER.info("Parsing file: {}", filePath);
         final File file = new File(filePath);
-        final List<LocalDate> marketDates = new ArrayList<>();
+        List<LocalDate> marketDates;
 
         try (final BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
-            bufferedReader.readLine(); //skip heading line
 
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
+            marketDates = bufferedReader.lines().skip(1).map(line -> {
                 final String[] marketData = line.split(Delimiters.COMMA_DELIMITER);
 
                 String dateFormat = "";
@@ -73,11 +71,12 @@ public class MarketHolidayServiceImpl implements MarketHolidayService {
                     dateFormat = DateFormatsAndPatterns.MARKET_QUOTE_YYYY_MM_DD_DATE_FORMAT;
                 }
 
-                marketDates.add(LocalDate.parse(marketData[0], DateTimeFormatter.ofPattern(dateFormat)));
-            }
+                return LocalDate.parse(marketData[0], DateTimeFormatter.ofPattern(dateFormat));
+            }).collect(Collectors.toList());
+
         }
 
         LOGGER.info("file :{} parsed successfully", filePath);
-        return marketDates.isEmpty() ? Optional.empty() : Optional.of(marketDates);
+        return marketDates == null || marketDates.isEmpty() ? Optional.empty() : Optional.of(marketDates);
     }
 }
