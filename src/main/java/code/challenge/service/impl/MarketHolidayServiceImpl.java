@@ -32,16 +32,22 @@ public class MarketHolidayServiceImpl implements MarketHolidayService {
             return Optional.empty();
         }
 
-        final List<LocalDate> marketDates = marketDatesOptional.get().stream()
+        List<LocalDate> unsortedMarketDates = marketDatesOptional.get();
+
+        if(unsortedMarketDates.isEmpty()){
+            return Optional.empty();
+        }
+
+        final List<LocalDate> sortedMarketDates = unsortedMarketDates.stream()
                 .sorted().collect(Collectors.toList());
 
-        LocalDate candidateHoliday = marketDates.get(0);
-        final LocalDate latestDate = marketDates.get(marketDates.size() - 1);
+        LocalDate candidateHoliday = sortedMarketDates.get(0);
+        final LocalDate latestDate = sortedMarketDates.get(sortedMarketDates.size() - 1);
 
         final List<String> holidays = new ArrayList<>();
 
         while (!candidateHoliday.isEqual(latestDate)) {
-            if (!marketDates.contains(candidateHoliday) &&
+            if (!sortedMarketDates.contains(candidateHoliday) &&
                     !WeekEndsEnum.getWeekEnds().contains(candidateHoliday.getDayOfWeek().name())) {
 
                 holidays.add(candidateHoliday.format(DateTimeFormatter.ofPattern(DateFormatsAndPatterns.MARKET_QUOTE_DD_MM_YYYY_DATE_FORMAT)));
@@ -50,7 +56,7 @@ public class MarketHolidayServiceImpl implements MarketHolidayService {
             candidateHoliday = candidateHoliday.plusDays(1);
         }
 
-        return holidays.isEmpty() ? Optional.empty() : Optional.of(holidays);
+        return Optional.ofNullable(holidays);
     }
 
     private Optional<List<LocalDate>> readMarketDatesFromCsv(final String filePath) throws IOException {
@@ -77,6 +83,6 @@ public class MarketHolidayServiceImpl implements MarketHolidayService {
         }
 
         LOGGER.info("file :{} parsed successfully", filePath);
-        return marketDates == null || marketDates.isEmpty() ? Optional.empty() : Optional.of(marketDates);
+        return Optional.ofNullable(marketDates);
     }
 }
