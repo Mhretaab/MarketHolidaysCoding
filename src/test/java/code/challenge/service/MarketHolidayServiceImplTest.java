@@ -1,7 +1,9 @@
 package code.challenge.service;
 
-import code.challenge.service.impl.MarketHolidayServiceImpl;
+import code.challenge.service.impl.CsvFileParser;
+import code.challenge.service.impl.StockMarketServiceImpl;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -11,6 +13,13 @@ import java.util.Optional;
 
 class MarketHolidayServiceImplTest {
 
+    private FileParser<String, List<String[]>> fileParser;
+
+    @BeforeEach
+    public void setUp(){
+        fileParser = new CsvFileParser();
+    }
+
     @Test
     void givenMarketQuotes_WhenRequestedForHoliday_shouldReturnListOfHolidays() throws IOException {
         //Given
@@ -18,7 +27,7 @@ class MarketHolidayServiceImplTest {
         URL resource = classLoader.getResource("test_data.csv");
 
         //When
-        MarketHolidayService marketHolidayService = new MarketHolidayServiceImpl();
+        StockMarketService marketHolidayService = new StockMarketServiceImpl(fileParser);
         Optional<List<String>> marketHolidays = marketHolidayService.getMarketHolidays(resource.getPath());
 
         //Then
@@ -33,7 +42,7 @@ class MarketHolidayServiceImplTest {
         URL resource = classLoader.getResource("EPAM.csv");
 
         //When
-        MarketHolidayService marketHolidayService = new MarketHolidayServiceImpl();
+        StockMarketService marketHolidayService = new StockMarketServiceImpl(fileParser);
         Optional<List<String>> marketHolidays = marketHolidayService.getMarketHolidays(resource.getPath());
 
         //Then
@@ -44,7 +53,7 @@ class MarketHolidayServiceImplTest {
     @Test
     void givenNoCSVFile_WhenRequestedForHoliday_ShouldThrowException() {
         //Given
-        MarketHolidayService marketHolidayService = new MarketHolidayServiceImpl();
+        StockMarketService marketHolidayService = new StockMarketServiceImpl(fileParser);
 
         //Then
         Assertions.assertThrows(IOException.class, () -> marketHolidayService.getMarketHolidays("no_file.csv"));
